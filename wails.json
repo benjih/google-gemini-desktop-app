@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "Google Gemini",
+  "outputfilename": "Google Gemini",
+  "frontend:install": "",
+  "frontend:build": "",
+  "author": {
+    "name": "benjih",
+    "email": "benji@sixp.in"
+  }
+}
