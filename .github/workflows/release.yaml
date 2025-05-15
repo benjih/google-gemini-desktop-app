@@ -11,7 +11,7 @@ jobs:
       matrix:
         build: [
           {zipName: google-gemini-desktop-app-linux-amd64-v0.0.1, name: google-gemini, platform: linux/amd64, os: ubuntu-latest},
-          {zipName: google-gemini-desktop-app-windows-amd64-v0.0.1, name: "Google\ Gemini.exe", platform: windows/amd64, os: windows-latest},
+          {zipName: google-gemini-desktop-app-windows-amd64-v0.0.1, name: "Google-Gemini.exe", platform: windows/amd64, os: windows-latest},
         ]
     runs-on: ${{ matrix.build.os }}
     steps:
