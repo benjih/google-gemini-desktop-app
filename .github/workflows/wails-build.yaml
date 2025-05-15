@@ -18,36 +18,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch all tags 
-        run: git fetch --tags --force
-
-      - name: Calculate next version
-        id: version
-        run: |
-          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Latest tag: $latest_tag"
-          latest_version=${latest_tag#v}
-          major=$(echo $latest_version | cut -d. -f1)
-          minor=$(echo $latest_version | cut -d. -f2)
-          patch=$(echo $latest_version | cut -d. -f3)
-          next_patch=$((patch + 1))
-          new_version="v$major.$minor.$next_patch"
-          echo "Calculated next version: $new_version"
-          echo "version=$new_version" >> $GITHUB_OUTPUT
       - uses: dAppServer/wails-build-action@main
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
           build-obfuscate: true
-
-      - name: Create GitHub Release 
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          tag_name: ${{ steps.version.outputs.version }}
-          release_name: ${{ steps.version.outputs.version }}
-          body: |
-            Automated release for version ${{ steps.version.outputs.version }}
-          draft: false
-          prerelease: false
