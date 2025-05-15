@@ -2,8 +2,6 @@ module github.com/benjih/google-gemini-desktop-app
 
 go 1.23.0
 
-toolchain go1.24.1
-
 require github.com/wailsapp/wails/v2 v2.10.1
 
 require (
