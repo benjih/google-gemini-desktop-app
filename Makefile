@@ -1,7 +1,7 @@
 .PHONY: dev
 dev:
-	wails dev 
+	go tool wails dev 
 
 .PHONY: build
 build:
-	wails build
+	go tool wails build
